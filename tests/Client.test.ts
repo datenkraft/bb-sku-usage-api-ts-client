@@ -16,13 +16,13 @@ describe('Client Test (staging)', () => {
         )
             .then(() => {
                 SkuUsageApiClient.Generated.SkuUsageService
-                    .getSkuUsage('00000000-0000-0000-0000-000000000000', 'external_id_test_1')
+                    .getSkuUsage('ba74c99d-d622-4dcd-a1d5-f3db80d0a1c8', 'external_id_test_1')
                     .then((skuUsage) => {
                         expect(skuUsage).toEqual({
                             skuUsageId: '00000000-0000-0000-0000-000000000000',
                             skuCode: 'test_sku_code',
                             quantity: 1,
-                            projectId: '00000000-0000-0000-0000-000000000000',
+                            projectId: 'ba74c99d-d622-4dcd-a1d5-f3db80d0a1c8',
                             usageStart: '2021-01-01T00:00:00+00:00',
                             usageEnd: '2021-01-01T23:59:59+00:00',
                             externalId: 'external_id_test_1',

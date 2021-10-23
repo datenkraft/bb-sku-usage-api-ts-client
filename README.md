@@ -13,7 +13,7 @@ The SKU Usage API TS Client enables you to work with the SKU Usage API.
 You can use [npm](https://www.npmjs.com/) to install the package.
 
 ~~~~ bash
-npm install @datenkraft/bb-sku-Usage-api-ts-client
+npm install @datenkraft/bb-sku-usage-api-ts-client
 ~~~~
 
 ## Using the package
@@ -26,7 +26,7 @@ The Client is auto-generated with [ferdikoomen/openapi-typescript-codegen](https
 
 ~~~~ typescript
 import { ConfigOptions } from '@datenkraft/bb-base-api-ts-client';
-import { SkuusageApiClient } from '@datenkraft/bb-sku-usage-api-ts-client';
+import { SkuUsageApiClient } from '@datenkraft/bb-sku-usage-api-ts-client';
 
 const configOptions: ConfigOptions = {
   clientId: 'clientId',
@@ -42,10 +42,11 @@ SkuUsageApiClient.init(configOptions).then(() => {
 });
 ~~~~
 
-### Example Endpoint: Get SKU
+### Example Endpoint: Get SKU Usage
 ~~~~ typescript
-SkuusageApiClient.Generated.SkuService.getSku('skuCode')
-  .then((sku) => {
+SkuUsageApiClient.Generated.SkuUsageService
+  .getSkuUsage('project-id', 'external-id')
+  .then((skuUsage) => {
     // Request succeeded
   })
   .catch((error) => {
