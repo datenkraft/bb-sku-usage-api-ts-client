@@ -17,6 +17,10 @@ export type task = {
      */
     taskStatus: string;
     /**
+     * Identity ID
+     */
+    identityId: string;
+    /**
      * Entry Count
      */
     entryCount: number;

@@ -44,7 +44,7 @@ export class SkuUsageService {
      * Add SKU Usage data
      * @param requestBody
      * @returns errorResponse Unexpected error
-     * @returns postSkuUsageCollectionResponse created
+     * @returns postSkuUsageCollectionResponse Created
      * @throws ApiError
      */
     public static async postSkuUsageCollection(
