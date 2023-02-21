@@ -18,7 +18,7 @@ describe('Client Test (staging)', () => {
                 SkuUsageApiClient.Generated.SkuUsageService
                     .getSkuUsage('ba74c99d-d622-4dcd-a1d5-f3db80d0a1c8', 'external_id_test_1')
                     .then((skuUsage) => {
-                        expect(skuUsage).toContainEqual([
+                        expect(skuUsage).toEqual([
                             {
                                 'externalId': 'external_id_test_1',
                                 'projectId': 'ba74c99d-d622-4dcd-a1d5-f3db80d0a1c8',
