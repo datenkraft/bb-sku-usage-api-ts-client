@@ -2,9 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Class PatchTransactionResource
- */
 export type patchResponseTransaction = {
     /**
      * Transaction Id

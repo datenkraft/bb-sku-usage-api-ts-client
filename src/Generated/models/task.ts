@@ -4,9 +4,6 @@
 
 import type { patchResponseTransaction } from './patchResponseTransaction';
 
-/**
- * Class TaskResource
- */
 export type task = {
     /**
      * Task Id

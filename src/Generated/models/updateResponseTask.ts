@@ -2,9 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Class PatchTaskResource
- */
 export type updateResponseTask = {
     /**
      * Task Id

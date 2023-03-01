@@ -10,17 +10,21 @@ import { request as __request } from '../core/request';
 export class SkuUsageService {
 
     /**
-     * Query SKU Usage data by projectId and externalId
-     * Query SKU Usage data by projectId and externalId
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
      * @param filterProjectId SKUUsage ProjectId filter
      * @param filterExternalId SKUUsage ExternalId filter
+     * @param filterSkuUsageIds SKUUsage SkuUsageIds filter
+     * @param filterSkuGroupIds SKUUsage SkuGroupIds filter
      * @returns getSkuUsageResponse OK
      * @returns errorResponse Unexpected error
      * @throws ApiError
      */
     public static async getSkuUsage(
-        filterProjectId: string,
-        filterExternalId: string,
+        filterProjectId?: string,
+        filterExternalId?: string,
+        filterSkuUsageIds?: string,
+        filterSkuGroupIds?: string,
     ): Promise<getSkuUsageResponse | errorResponse> {
         const result = await __request({
             method: 'GET',
@@ -28,6 +32,8 @@ export class SkuUsageService {
             query: {
                 'filter[projectId]': filterProjectId,
                 'filter[externalId]': filterExternalId,
+                'filter[skuUsageIds]': filterSkuUsageIds,
+                'filter[skuGroupIds]': filterSkuGroupIds,
             },
             errors: {
                 400: `Bad Request`,

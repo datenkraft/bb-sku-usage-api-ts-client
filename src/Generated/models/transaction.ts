@@ -2,9 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Class TransactionResource
- */
 export type transaction = {
     /**
      * Transaction Id

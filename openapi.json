@@ -2,24 +2,98 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Backbone SKU Usage API",
-        "description": "API to insert usage information for a specific project and SKU",
-        "version": "1.0.0"
+        "description": "\n- alpha: Currently developed API version. Subject to major changes.\n- beta: A semi-stable early access version. New features can be added. Breaking changes are possible.\n- stable: The API is recommended for use in production.\n\n[Changelog](https:\/\/sku-usage-api.conqore.niceshops.com\/v1\/docs\/changelog.html)\n\nAll data is transferred in UTF-8 encoding.\\\nThe API uses stateless HTTP. No cookies have to be kept.\\\nAuthentication via OAuth2 client credentials flow.\n\n[Backbone SKU Usage API PHP client @Packagist](https:\/\/packagist.org\/packages\/datenkraft\/bb-sku-usage-api-php-client)",
+        "version": "v1.beta"
     },
     "servers": [
         {
-            "url": "https://sku-usage.conqore.niceshops.com/v1",
-            "description": "Production server"
-        },
-        {
-            "url": "https://sku-usage.staging.backbone.datenkraft.info/v1",
-            "description": "Staging server"
-        },
-        {
-            "url": "https://localhost:30210/v1",
-            "description": "Development server"
+            "url": "https://sku-usage-api.conqore.niceshops.com/v1",
+            "description": "Production Server"
         }
     ],
     "paths": {
+        "/docs": {
+            "get": {
+                "tags": [
+                    "docs"
+                ],
+                "summary": "Get the openapi documentation as json",
+                "description": "Get the openapi documentation as json",
+                "operationId": "getOpenApi",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/docs/openapi.{format}": {
+            "get": {
+                "tags": [
+                    "docs"
+                ],
+                "summary": "Get the openapi documentation in the specified format",
+                "description": "Get the openapi documentation in the specified format",
+                "operationId": "getOpenApiInFormat",
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "path",
+                        "description": "Openapi file format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "yaml",
+                                "json"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/docs/changelog.{format}": {
+            "get": {
+                "tags": [
+                    "docs"
+                ],
+                "summary": "Get the changelog in the specified format",
+                "description": "Get the changelog in the specified format",
+                "operationId": "getChangelogInFormat",
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "path",
+                        "description": "Changelog file format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "md",
+                                "html"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Changelog not found"
+                    },
+                    "400": {
+                        "description": "Invalid format"
+                    }
+                }
+            }
+        },
         "/auth/role": {
             "get": {
                 "tags": [
@@ -79,7 +153,15 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/role-identity": {
@@ -141,7 +223,15 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -241,7 +331,15 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -334,244 +432,15 @@
                             }
                         }
                     }
-                }
-            }
-        },
-        "/docs": {
-            "get": {
-                "tags": [
-                    "docs"
-                ],
-                "summary": "Get the openapi documentation as json",
-                "description": "Get the openapi documentation as json",
-                "operationId": "getOpenApi",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/docs/openapi.{format}": {
-            "get": {
-                "tags": [
-                    "docs"
-                ],
-                "summary": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
-                "description": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
-                "operationId": "getOpenApiInFormat",
-                "parameters": [
-                    {
-                        "name": "format",
-                        "in": "path",
-                        "description": "Openapi file format",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "yaml",
-                                "json"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/sku-usage": {
-            "get": {
-                "tags": [
-                    "skuUsage"
-                ],
-                "summary": "Query SKU Usage data by projectId and externalId",
-                "description": "Query SKU Usage data by projectId and externalId",
-                "operationId": "getSkuUsage",
-                "parameters": [
-                    {
-                        "name": "filter[projectId]",
-                        "in": "query",
-                        "description": "SKUUsage ProjectId filter",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filter[externalId]",
-                        "in": "query",
-                        "description": "SKUUsage ExternalId filter",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/getSkuUsageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "skuUsage"
-                ],
-                "summary": "Add SKU Usage data",
-                "description": "Add SKU Usage data",
-                "operationId": "postSkuUsageCollection",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/postSkuUsageCollectionRequest"
-                            }
-                        }
-                    }
                 },
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/postSkuUsageCollectionResponse"
-                                }
-                            }
-                        }
+                "security": [
+                    {
+                        "oAuthAuthorization": []
                     },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "409": {
-                        "description": "Conflict",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable Entity",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
+                    {
+                        "bearerAuth": []
                     }
-                }
+                ]
             }
         },
         "/task/{taskId}": {
@@ -654,7 +523,15 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -755,7 +632,241 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/sku-usage": {
+            "get": {
+                "tags": [
+                    "skuUsage"
+                ],
+                "summary": "Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given",
+                "description": "Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given",
+                "operationId": "getSkuUsage",
+                "parameters": [
+                    {
+                        "name": "filter[projectId]",
+                        "in": "query",
+                        "description": "SKUUsage ProjectId filter",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter[externalId]",
+                        "in": "query",
+                        "description": "SKUUsage ExternalId filter",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter[skuUsageIds]",
+                        "in": "query",
+                        "description": "SKUUsage SkuUsageIds filter",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter[skuGroupIds]",
+                        "in": "query",
+                        "description": "SKUUsage SkuGroupIds filter",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/getSkuUsageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "skuUsage"
+                ],
+                "summary": "Add SKU Usage data",
+                "description": "Add SKU Usage data",
+                "operationId": "postSkuUsageCollection",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/postSkuUsageCollectionRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/postSkuUsageCollectionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/task/{taskId}/transaction/{transactionId}": {
@@ -867,7 +978,15 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -977,7 +1096,15 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/task/{taskId}/transaction/sku-usage": {
@@ -1080,7 +1207,15 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         }
     },
@@ -1097,6 +1232,30 @@
                     }
                 },
                 "type": "object"
+            },
+            "informationResponse": {
+                "properties": {
+                    "information": {
+                        "description": "information",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/information"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "information": {
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/error"
+                    }
+                ]
             },
             "error": {
                 "required": [
@@ -1127,27 +1286,56 @@
                 },
                 "type": "object"
             },
-            "authPermissionResource": {
+            "collection": {
+                "title": "collection",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/collectionPagination"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "collectionPagination": {
+                "title": "collectionPagination",
+                "properties": {
+                    "page": {
+                        "description": "The page contained in this collection.",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "description": "The page size used for reading the collection.",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleIdentityResource": {
                 "required": [
-                    "permissionCode",
-                    "name"
+                    "roleCode",
+                    "identityId"
                 ],
                 "properties": {
-                    "permissionCode": {
-                        "description": "Permission Code",
+                    "roleCode": {
+                        "description": "Role Code",
                         "type": "string"
                     },
-                    "name": {
-                        "description": "Name",
+                    "identityId": {
+                        "description": "Identity ID",
                         "type": "string"
                     }
                 },
                 "type": "object"
             },
-            "getAuthPermissionCollectionResponse": {
+            "authRoleIdentityCollection": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/components/schemas/authPermissionResource"
+                    "$ref": "#/components/schemas/authRoleIdentityResource"
                 }
             },
             "authRoleResource": {
@@ -1173,28 +1361,28 @@
                     "$ref": "#/components/schemas/authRoleResource"
                 }
             },
-            "authRoleIdentityResource": {
+            "getAuthPermissionCollectionResponse": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authPermissionResource"
+                }
+            },
+            "authPermissionResource": {
                 "required": [
-                    "roleCode",
-                    "identityId"
+                    "permissionCode",
+                    "name"
                 ],
                 "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
+                    "permissionCode": {
+                        "description": "Permission Code",
                         "type": "string"
                     },
-                    "identityId": {
-                        "description": "Identity ID",
+                    "name": {
+                        "description": "Name",
                         "type": "string"
                     }
                 },
                 "type": "object"
-            },
-            "authRoleIdentityCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleIdentityResource"
-                }
             },
             "skuUsage": {
                 "required": [
@@ -1272,44 +1460,12 @@
                 }
             },
             "getSkuUsageResponse": {
-                "description": "Class SkuUsageResource",
                 "type": "array",
                 "items": {
                     "$ref": "#/components/schemas/skuUsage"
                 }
             },
-            "updateTask": {
-                "required": [
-                    "taskStatus"
-                ],
-                "properties": {
-                    "taskStatus": {
-                        "description": "Task Status",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "updateResponseTask": {
-                "description": "Class PatchTaskResource",
-                "required": [
-                    "taskId",
-                    "taskStatus"
-                ],
-                "properties": {
-                    "taskId": {
-                        "description": "Task Id",
-                        "type": "string"
-                    },
-                    "taskStatus": {
-                        "description": "Task Status",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
             "task": {
-                "description": "Class TaskResource",
                 "required": [
                     "taskId",
                     "taskStatus",
@@ -1344,6 +1500,47 @@
                 },
                 "type": "object"
             },
+            "updateTask": {
+                "required": [
+                    "taskStatus"
+                ],
+                "properties": {
+                    "taskStatus": {
+                        "description": "Task Status",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "updateResponseTask": {
+                "required": [
+                    "taskId",
+                    "taskStatus"
+                ],
+                "properties": {
+                    "taskId": {
+                        "description": "Task Id",
+                        "type": "string"
+                    },
+                    "taskStatus": {
+                        "description": "Task Status",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "postResponseTransaction": {
+                "required": [
+                    "transactionId"
+                ],
+                "properties": {
+                    "transactionId": {
+                        "description": "Transaction Id",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "patchTransaction": {
                 "required": [
                     "transactionSeen"
@@ -1357,7 +1554,6 @@
                 "type": "object"
             },
             "patchResponseTransaction": {
-                "description": "Class PatchTransactionResource",
                 "required": [
                     "transactionId",
                     "transactionStatus",
@@ -1379,21 +1575,7 @@
                 },
                 "type": "object"
             },
-            "postResponseTransaction": {
-                "description": "Class PostTransactionResource",
-                "required": [
-                    "transactionId"
-                ],
-                "properties": {
-                    "transactionId": {
-                        "description": "Transaction Id",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
             "transaction": {
-                "description": "Class TransactionResource",
                 "properties": {
                     "transactionId": {
                         "description": "Transaction Id",
@@ -1438,6 +1620,12 @@
                         "scopes": {}
                     }
                 }
+            },
+            "bearerAuth": {
+                "type": "http",
+                "description": "Bearer Token Authorization",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }
