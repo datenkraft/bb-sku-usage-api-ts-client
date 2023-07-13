@@ -1,3 +1,6 @@
+export * from './audit-log';
+export * from './audit-log-collection';
+export * from './audit-log-collection-all-of';
 export * from './auth-permission-resource';
 export * from './auth-permission-role-resource';
 export * from './auth-role-identity-resource';
@@ -6,6 +9,7 @@ export * from './collection';
 export * from './collection-pagination';
 export * from './error-extra';
 export * from './error-response';
+export * from './get-report-sku-usage-collection-filter-meta-parameter';
 export * from './information';
 export * from './information-response';
 export * from './model-error';

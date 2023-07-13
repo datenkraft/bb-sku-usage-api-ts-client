@@ -14,11 +14,13 @@
 
 
 
+export * from './apis/audit-log-api';
 export * from './apis/auth-permission-api';
 export * from './apis/auth-permission-role-api';
 export * from './apis/auth-role-api';
 export * from './apis/auth-role-identity-api';
 export * from './apis/docs-api';
+export * from './apis/report-api';
 export * from './apis/sku-usage-api';
 export * from './apis/task-api';
 export * from './apis/transaction-api';
