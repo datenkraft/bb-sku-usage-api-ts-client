@@ -27,7 +27,6 @@ models/collection-pagination.ts
 models/collection.ts
 models/error-extra.ts
 models/error-response.ts
-models/get-report-sku-usage-collection-filter-meta-parameter.ts
 models/index.ts
 models/information-response.ts
 models/information.ts

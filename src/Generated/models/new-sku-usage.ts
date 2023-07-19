@@ -61,6 +61,6 @@ export interface NewSkuUsage {
      * @type {object}
      * @memberof NewSkuUsage
      */
-    'meta'?: object;
+    'meta'?: object | null;
 }
 

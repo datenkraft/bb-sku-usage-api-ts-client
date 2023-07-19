@@ -1344,6 +1344,7 @@
                     {
                         "name": "filter[projectId]",
                         "in": "query",
+                        "description": "Project Id",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1352,6 +1353,7 @@
                     {
                         "name": "filter[usageStart]",
                         "in": "query",
+                        "description": "Start of the usage",
                         "schema": {
                             "type": "string",
                             "format": "date"
@@ -1360,26 +1362,28 @@
                     {
                         "name": "filter[usageEnd]",
                         "in": "query",
+                        "description": "End of the usage",
                         "schema": {
                             "type": "string",
                             "format": "date"
                         }
                     },
                     {
-                        "name": "filter[meta]",
+                        "name": "filter[metaKey]",
                         "in": "query",
+                        "description": "Key of the meta field",
                         "required": true,
-                        "style": "deepObject",
                         "schema": {
-                            "properties": {
-                                "key": {
-                                    "type": "string"
-                                },
-                                "value": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter[metaValue]",
+                        "in": "query",
+                        "description": "Value of the meta field",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 ],
@@ -1472,7 +1476,7 @@
                     {
                         "name": "filter[projectId]",
                         "in": "query",
-                        "description": "SKUUsage ProjectId filter",
+                        "description": "SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]",
                         "required": false,
                         "schema": {
                             "type": "string"
@@ -2557,7 +2561,8 @@
                     },
                     "meta": {
                         "description": "Meta",
-                        "type": "object"
+                        "type": "object",
+                        "nullable": true
                     }
                 },
                 "type": "object"

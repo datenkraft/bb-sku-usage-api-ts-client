@@ -26,8 +26,6 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { ErrorResponse } from '../models';
-// @ts-ignore
-import { GetReportSkuUsageCollectionFilterMetaParameter } from '../models';
 /**
  * ReportApi - axios parameter creator
  * @export
@@ -37,18 +35,21 @@ export const ReportApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Query a list of sku usage ids that match the selected filters
          * @summary Get a list of sku usage ids
-         * @param {string} filterProjectId 
-         * @param {GetReportSkuUsageCollectionFilterMetaParameter} filterMeta 
-         * @param {string} [filterUsageStart] 
-         * @param {string} [filterUsageEnd] 
+         * @param {string} filterProjectId Project Id
+         * @param {string} filterMetaKey Key of the meta field
+         * @param {string} filterMetaValue Value of the meta field
+         * @param {string} [filterUsageStart] Start of the usage
+         * @param {string} [filterUsageEnd] End of the usage
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getReportSkuUsageCollection: async (filterProjectId: string, filterMeta: GetReportSkuUsageCollectionFilterMetaParameter, filterUsageStart?: string, filterUsageEnd?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getReportSkuUsageCollection: async (filterProjectId: string, filterMetaKey: string, filterMetaValue: string, filterUsageStart?: string, filterUsageEnd?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'filterProjectId' is not null or undefined
             assertParamExists('getReportSkuUsageCollection', 'filterProjectId', filterProjectId)
-            // verify required parameter 'filterMeta' is not null or undefined
-            assertParamExists('getReportSkuUsageCollection', 'filterMeta', filterMeta)
+            // verify required parameter 'filterMetaKey' is not null or undefined
+            assertParamExists('getReportSkuUsageCollection', 'filterMetaKey', filterMetaKey)
+            // verify required parameter 'filterMetaValue' is not null or undefined
+            assertParamExists('getReportSkuUsageCollection', 'filterMetaValue', filterMetaValue)
             const localVarPath = `/report/sku-usage`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -85,8 +86,12 @@ export const ReportApiAxiosParamCreator = function (configuration?: Configuratio
                     filterUsageEnd;
             }
 
-            if (filterMeta !== undefined) {
-                localVarQueryParameter['filter[meta]'] = filterMeta;
+            if (filterMetaKey !== undefined) {
+                localVarQueryParameter['filter[metaKey]'] = filterMetaKey;
+            }
+
+            if (filterMetaValue !== undefined) {
+                localVarQueryParameter['filter[metaValue]'] = filterMetaValue;
             }
 
 
@@ -113,15 +118,16 @@ export const ReportApiFp = function(configuration?: Configuration) {
         /**
          * Query a list of sku usage ids that match the selected filters
          * @summary Get a list of sku usage ids
-         * @param {string} filterProjectId 
-         * @param {GetReportSkuUsageCollectionFilterMetaParameter} filterMeta 
-         * @param {string} [filterUsageStart] 
-         * @param {string} [filterUsageEnd] 
+         * @param {string} filterProjectId Project Id
+         * @param {string} filterMetaKey Key of the meta field
+         * @param {string} filterMetaValue Value of the meta field
+         * @param {string} [filterUsageStart] Start of the usage
+         * @param {string} [filterUsageEnd] End of the usage
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getReportSkuUsageCollection(filterProjectId: string, filterMeta: GetReportSkuUsageCollectionFilterMetaParameter, filterUsageStart?: string, filterUsageEnd?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<string>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getReportSkuUsageCollection(filterProjectId, filterMeta, filterUsageStart, filterUsageEnd, options);
+        async getReportSkuUsageCollection(filterProjectId: string, filterMetaKey: string, filterMetaValue: string, filterUsageStart?: string, filterUsageEnd?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<string>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getReportSkuUsageCollection(filterProjectId, filterMetaKey, filterMetaValue, filterUsageStart, filterUsageEnd, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -137,15 +143,16 @@ export const ReportApiFactory = function (configuration?: Configuration, basePat
         /**
          * Query a list of sku usage ids that match the selected filters
          * @summary Get a list of sku usage ids
-         * @param {string} filterProjectId 
-         * @param {GetReportSkuUsageCollectionFilterMetaParameter} filterMeta 
-         * @param {string} [filterUsageStart] 
-         * @param {string} [filterUsageEnd] 
+         * @param {string} filterProjectId Project Id
+         * @param {string} filterMetaKey Key of the meta field
+         * @param {string} filterMetaValue Value of the meta field
+         * @param {string} [filterUsageStart] Start of the usage
+         * @param {string} [filterUsageEnd] End of the usage
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getReportSkuUsageCollection(filterProjectId: string, filterMeta: GetReportSkuUsageCollectionFilterMetaParameter, filterUsageStart?: string, filterUsageEnd?: string, options?: any): AxiosPromise<Array<string>> {
-            return localVarFp.getReportSkuUsageCollection(filterProjectId, filterMeta, filterUsageStart, filterUsageEnd, options).then((request) => request(axios, basePath));
+        getReportSkuUsageCollection(filterProjectId: string, filterMetaKey: string, filterMetaValue: string, filterUsageStart?: string, filterUsageEnd?: string, options?: any): AxiosPromise<Array<string>> {
+            return localVarFp.getReportSkuUsageCollection(filterProjectId, filterMetaKey, filterMetaValue, filterUsageStart, filterUsageEnd, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -159,15 +166,16 @@ export interface ReportApiInterface {
     /**
      * Query a list of sku usage ids that match the selected filters
      * @summary Get a list of sku usage ids
-     * @param {string} filterProjectId 
-     * @param {GetReportSkuUsageCollectionFilterMetaParameter} filterMeta 
-     * @param {string} [filterUsageStart] 
-     * @param {string} [filterUsageEnd] 
+     * @param {string} filterProjectId Project Id
+     * @param {string} filterMetaKey Key of the meta field
+     * @param {string} filterMetaValue Value of the meta field
+     * @param {string} [filterUsageStart] Start of the usage
+     * @param {string} [filterUsageEnd] End of the usage
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReportApiInterface
      */
-    getReportSkuUsageCollection(filterProjectId: string, filterMeta: GetReportSkuUsageCollectionFilterMetaParameter, filterUsageStart?: string, filterUsageEnd?: string, options?: AxiosRequestConfig): AxiosPromise<Array<string>>;
+    getReportSkuUsageCollection(filterProjectId: string, filterMetaKey: string, filterMetaValue: string, filterUsageStart?: string, filterUsageEnd?: string, options?: AxiosRequestConfig): AxiosPromise<Array<string>>;
 
 }
 
@@ -181,15 +189,16 @@ export class ReportApi extends BaseAPI implements ReportApiInterface {
     /**
      * Query a list of sku usage ids that match the selected filters
      * @summary Get a list of sku usage ids
-     * @param {string} filterProjectId 
-     * @param {GetReportSkuUsageCollectionFilterMetaParameter} filterMeta 
-     * @param {string} [filterUsageStart] 
-     * @param {string} [filterUsageEnd] 
+     * @param {string} filterProjectId Project Id
+     * @param {string} filterMetaKey Key of the meta field
+     * @param {string} filterMetaValue Value of the meta field
+     * @param {string} [filterUsageStart] Start of the usage
+     * @param {string} [filterUsageEnd] End of the usage
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReportApi
      */
-    public getReportSkuUsageCollection(filterProjectId: string, filterMeta: GetReportSkuUsageCollectionFilterMetaParameter, filterUsageStart?: string, filterUsageEnd?: string, options?: AxiosRequestConfig) {
-        return ReportApiFp(this.configuration).getReportSkuUsageCollection(filterProjectId, filterMeta, filterUsageStart, filterUsageEnd, options).then((request) => request(this.axios, this.basePath));
+    public getReportSkuUsageCollection(filterProjectId: string, filterMetaKey: string, filterMetaValue: string, filterUsageStart?: string, filterUsageEnd?: string, options?: AxiosRequestConfig) {
+        return ReportApiFp(this.configuration).getReportSkuUsageCollection(filterProjectId, filterMetaKey, filterMetaValue, filterUsageStart, filterUsageEnd, options).then((request) => request(this.axios, this.basePath));
     }
 }
