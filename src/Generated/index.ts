@@ -4,7 +4,11 @@
 export { ApiError } from './core/ApiError';
 export { OpenAPI } from './core/OpenAPI';
 
+export type { auditLog } from './models/auditLog';
+export type { auditLogCollection } from './models/auditLogCollection';
 export type { authPermissionResource } from './models/authPermissionResource';
+export type { authPermissionRoleCollection } from './models/authPermissionRoleCollection';
+export type { authPermissionRoleResource } from './models/authPermissionRoleResource';
 export type { authRoleCollection } from './models/authRoleCollection';
 export type { authRoleIdentityCollection } from './models/authRoleIdentityCollection';
 export type { authRoleIdentityResource } from './models/authRoleIdentityResource';
@@ -16,8 +20,10 @@ export type { errorExtra } from './models/errorExtra';
 export type { errorResponse } from './models/errorResponse';
 export type { getAuthPermissionCollectionResponse } from './models/getAuthPermissionCollectionResponse';
 export type { getSkuUsageResponse } from './models/getSkuUsageResponse';
+export type { identifiers } from './models/identifiers';
 export type { information } from './models/information';
 export type { informationResponse } from './models/informationResponse';
+export type { newAuthRoleResource } from './models/newAuthRoleResource';
 export type { newSkuUsage } from './models/newSkuUsage';
 export type { patchResponseTransaction } from './models/patchResponseTransaction';
 export type { patchTransaction } from './models/patchTransaction';
@@ -30,9 +36,13 @@ export type { transaction } from './models/transaction';
 export type { updateResponseTask } from './models/updateResponseTask';
 export type { updateTask } from './models/updateTask';
 
+export { AuditLogService } from './services/AuditLogService';
+export { AuthPermissionRoleService } from './services/AuthPermissionRoleService';
+export { AuthPermissionService } from './services/AuthPermissionService';
 export { AuthRoleIdentityService } from './services/AuthRoleIdentityService';
 export { AuthRoleService } from './services/AuthRoleService';
 export { DocsService } from './services/DocsService';
+export { ReportService } from './services/ReportService';
 export { SkuUsageService } from './services/SkuUsageService';
 export { TaskService } from './services/TaskService';
 export { TransactionService } from './services/TransactionService';
