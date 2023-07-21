@@ -12,6 +12,34 @@ import { request as __request } from '../core/request';
 export class TransactionService {
 
     /**
+     * Add a Transaction of SKU Usages to a Task
+     * Add a Transaction of SKU Usages to a Task
+     * @param taskId Task id
+     * @param requestBody
+     * @returns errorResponse Unexpected error
+     * @returns postResponseTransaction Accepted
+     * @throws ApiError
+     */
+    public static async postTransactionSkuUsageCollection(
+        taskId: string,
+        requestBody: postSkuUsageCollectionRequest,
+    ): Promise<errorResponse | postResponseTransaction> {
+        const result = await __request({
+            method: 'POST',
+            path: `/task/${taskId}/transaction/sku-usage`,
+            body: requestBody,
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+                500: `Server error`,
+            },
+        });
+        return result.body;
+    }
+
+    /**
      * Get Transactions from a Task
      * Get Transactions From a Task
      * @param taskId Task id
@@ -61,34 +89,6 @@ export class TransactionService {
         const result = await __request({
             method: 'PATCH',
             path: `/task/${taskId}/transaction/${transactionId}`,
-            body: requestBody,
-            errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                404: `Not Found`,
-                500: `Server error`,
-            },
-        });
-        return result.body;
-    }
-
-    /**
-     * Add a Transaction of SKU Usages to a Task
-     * Add a Transaction of SKU Usages to a Task
-     * @param taskId Task id
-     * @param requestBody
-     * @returns errorResponse Unexpected error
-     * @returns postResponseTransaction Accepted
-     * @throws ApiError
-     */
-    public static async postTransactionSkuUsageCollection(
-        taskId: string,
-        requestBody: postSkuUsageCollectionRequest,
-    ): Promise<errorResponse | postResponseTransaction> {
-        const result = await __request({
-            method: 'POST',
-            path: `/task/${taskId}/transaction/sku-usage`,
             body: requestBody,
             errors: {
                 400: `Bad Request`,

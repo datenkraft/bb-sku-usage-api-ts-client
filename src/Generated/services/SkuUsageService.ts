@@ -12,7 +12,7 @@ export class SkuUsageService {
     /**
      * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
      * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-     * @param filterProjectId SKUUsage ProjectId filter
+     * @param filterProjectId SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
      * @param filterExternalId SKUUsage ExternalId filter
      * @param filterSkuUsageIds SKUUsage SkuUsageIds filter
      * @param filterSkuGroupIds SKUUsage SkuGroupIds filter
