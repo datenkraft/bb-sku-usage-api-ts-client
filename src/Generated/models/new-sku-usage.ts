@@ -51,7 +51,7 @@ export interface NewSkuUsage {
      */
     'usageEnd': string;
     /**
-     * External Id
+     * External Id\\ Note: This is not required if the skuCode is \'su-manual-correction\'.
      * @type {string}
      * @memberof NewSkuUsage
      */
