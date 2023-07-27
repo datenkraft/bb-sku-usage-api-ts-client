@@ -24,7 +24,8 @@ export type newSkuUsage = {
      */
     usageEnd: string;
     /**
-     * External Id
+     * External Id\
+     * Note: This is not required if the skuCode is 'su-manual-correction'.
      */
     externalId: string;
     /**
