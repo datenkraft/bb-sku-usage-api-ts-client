@@ -16,6 +16,9 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import { ErrorExtra } from './error-extra';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ErrorReferencesInner } from './error-references-inner';
 
 /**
  * 
@@ -35,6 +38,12 @@ export interface ModelError {
      * @memberof ModelError
      */
     'message': string;
+    /**
+     * References
+     * @type {Array<ErrorReferencesInner>}
+     * @memberof ModelError
+     */
+    'references'?: Array<ErrorReferencesInner>;
     /**
      * 
      * @type {ErrorExtra}
