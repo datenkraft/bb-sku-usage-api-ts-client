@@ -13,7 +13,7 @@ describe("Client Test (staging)", () => {
 
     SkuUsageApiClient.getApiConfig(
       configOptions,
-      "https://sku-usage-api.staging.backbone.datenkraft.info/v1"
+      "https://sku-usage-api.staging.backbone.datenkraft.info/v2"
     )
       .then((config) => {
         const authRoleApi = new AuthRoleApi(config);
