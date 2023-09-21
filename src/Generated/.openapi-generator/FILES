@@ -7,7 +7,6 @@ apis/auth-permission-role-api.ts
 apis/auth-role-api.ts
 apis/auth-role-identity-api.ts
 apis/docs-api.ts
-apis/report-api.ts
 apis/sku-usage-api.ts
 apis/task-api.ts
 apis/transaction-api.ts
@@ -36,6 +35,8 @@ models/error-references-inner.ts
 models/error-response.ts
 models/get-auth-permission-collection-response-all-of.ts
 models/get-auth-permission-collection-response.ts
+models/get-sku-usage-response-all-of.ts
+models/get-sku-usage-response.ts
 models/index.ts
 models/information-response.ts
 models/information.ts

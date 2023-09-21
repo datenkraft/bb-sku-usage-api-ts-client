@@ -18,6 +18,8 @@ export * from './error-references-inner';
 export * from './error-response';
 export * from './get-auth-permission-collection-response';
 export * from './get-auth-permission-collection-response-all-of';
+export * from './get-sku-usage-response';
+export * from './get-sku-usage-response-all-of';
 export * from './information';
 export * from './information-response';
 export * from './model-error';
