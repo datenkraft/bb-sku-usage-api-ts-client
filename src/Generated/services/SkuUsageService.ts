@@ -10,8 +10,8 @@ import { request as __request } from '../core/request';
 export class SkuUsageService {
 
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
      * @param filterProjectId SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
      * @param filterExternalId SKUUsage ExternalId filter
      * @param filterSkuUsageIds SKUUsage SkuUsageIds filter
