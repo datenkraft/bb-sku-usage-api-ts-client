@@ -39,8 +39,8 @@ import { SkuUsage } from '../models';
 export const SkuUsageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
          * @param {number} [page] The page to read. Default is the first page.
          * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
          * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
@@ -166,8 +166,8 @@ export const SkuUsageApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SkuUsageApiAxiosParamCreator(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
          * @param {number} [page] The page to read. Default is the first page.
          * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
          * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
@@ -204,8 +204,8 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = SkuUsageApiFp(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
          * @param {number} [page] The page to read. Default is the first page.
          * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
          * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
@@ -239,8 +239,8 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
  */
 export interface SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
      * @param {number} [page] The page to read. Default is the first page.
      * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
      * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
@@ -274,8 +274,8 @@ export interface SkuUsageApiInterface {
  */
 export class SkuUsageApi extends BaseAPI implements SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
      * @param {number} [page] The page to read. Default is the first page.
      * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
      * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
