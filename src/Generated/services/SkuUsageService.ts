@@ -10,12 +10,21 @@ import { request as __request } from '../core/request';
 export class SkuUsageService {
 
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @param filterProjectId SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-     * @param filterExternalId SKUUsage ExternalId filter
-     * @param filterSkuUsageIds SKUUsage SkuUsageIds filter
-     * @param filterSkuGroupIds SKUUsage SkuGroupIds filter
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\
+     * At least one of those three options must be given.\
+     * Combining projectId and externalId with skuUsageIds is not possible.
+     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\
+     * At least one of those three options must be given.\
+     * Combining projectId and externalId with skuUsageIds is not possible.
+     * @param filterProjectId ProjectId filter
+     * - Required with filter[externalId]
+     * - Must not be present with filter[skuUsageIds]
+     * @param filterExternalId ExternalId filter
+     * - Required with filter[projectId]
+     * - Must not be present with filter[skuUsageIds]
+     * @param filterSkuUsageIds SkuUsageIds filter
+     * - Must not be present with filter[projectId] and filter[externalId]
+     * @param filterSkuGroupIds SkuGroupIds filter
      * @returns getSkuUsageResponse OK
      * @returns errorResponse Unexpected error
      * @throws ApiError
