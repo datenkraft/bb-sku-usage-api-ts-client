@@ -39,19 +39,16 @@ import { SkuUsage } from '../models';
 export const SkuUsageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @param {number} [page] The page to read. Default is the first page.
-         * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
-         * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-         * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-         * @param {string} [filterExternalId] SKUUsage ExternalId filter
-         * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-         * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+         * @param {string} [filterSkuGroupIds] SkuGroupIds filter
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSkuUsage: async (page?: number, pageSize?: number, paginationMode?: 'default' | 'totalCount', filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSkuUsage: async (filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/sku-usage`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -71,18 +68,6 @@ export const SkuUsageApiAxiosParamCreator = function (configuration?: Configurat
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (pageSize !== undefined) {
-                localVarQueryParameter['pageSize'] = pageSize;
-            }
-
-            if (paginationMode !== undefined) {
-                localVarQueryParameter['paginationMode'] = paginationMode;
-            }
 
             if (filterProjectId !== undefined) {
                 localVarQueryParameter['filter[projectId]'] = filterProjectId;
@@ -166,20 +151,17 @@ export const SkuUsageApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SkuUsageApiAxiosParamCreator(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @param {number} [page] The page to read. Default is the first page.
-         * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
-         * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-         * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-         * @param {string} [filterExternalId] SKUUsage ExternalId filter
-         * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-         * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+         * @param {string} [filterSkuGroupIds] SkuGroupIds filter
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSkuUsage(page?: number, pageSize?: number, paginationMode?: 'default' | 'totalCount', filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSkuUsageResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSkuUsage(page, pageSize, paginationMode, filterProjectId, filterExternalId, filterSkuUsageIds, filterSkuGroupIds, options);
+        async getSkuUsage(filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSkuUsageResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSkuUsage(filterProjectId, filterExternalId, filterSkuUsageIds, filterSkuGroupIds, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -204,20 +186,17 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = SkuUsageApiFp(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @param {number} [page] The page to read. Default is the first page.
-         * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
-         * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-         * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-         * @param {string} [filterExternalId] SKUUsage ExternalId filter
-         * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-         * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+         * @param {string} [filterSkuGroupIds] SkuGroupIds filter
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSkuUsage(page?: number, pageSize?: number, paginationMode?: 'default' | 'totalCount', filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: any): AxiosPromise<GetSkuUsageResponse> {
-            return localVarFp.getSkuUsage(page, pageSize, paginationMode, filterProjectId, filterExternalId, filterSkuUsageIds, filterSkuGroupIds, options).then((request) => request(axios, basePath));
+        getSkuUsage(filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: any): AxiosPromise<GetSkuUsageResponse> {
+            return localVarFp.getSkuUsage(filterProjectId, filterExternalId, filterSkuUsageIds, filterSkuGroupIds, options).then((request) => request(axios, basePath));
         },
         /**
          * Add SKU Usage data
@@ -239,20 +218,17 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
  */
 export interface SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @param {number} [page] The page to read. Default is the first page.
-     * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
-     * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-     * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-     * @param {string} [filterExternalId] SKUUsage ExternalId filter
-     * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-     * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+     * @param {string} [filterSkuGroupIds] SkuGroupIds filter
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SkuUsageApiInterface
      */
-    getSkuUsage(page?: number, pageSize?: number, paginationMode?: 'default' | 'totalCount', filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: AxiosRequestConfig): AxiosPromise<GetSkuUsageResponse>;
+    getSkuUsage(filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: AxiosRequestConfig): AxiosPromise<GetSkuUsageResponse>;
 
     /**
      * Add SKU Usage data
@@ -274,21 +250,18 @@ export interface SkuUsageApiInterface {
  */
 export class SkuUsageApi extends BaseAPI implements SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @param {number} [page] The page to read. Default is the first page.
-     * @param {number} [pageSize] The maximum size per page is 100. Default is 100.
-     * @param {'default' | 'totalCount'} [paginationMode] The paginationMode to use: - default: The total number of items in the collection will not be calculated. - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-     * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-     * @param {string} [filterExternalId] SKUUsage ExternalId filter
-     * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-     * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+     * @param {string} [filterSkuGroupIds] SkuGroupIds filter
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SkuUsageApi
      */
-    public getSkuUsage(page?: number, pageSize?: number, paginationMode?: 'default' | 'totalCount', filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: AxiosRequestConfig) {
-        return SkuUsageApiFp(this.configuration).getSkuUsage(page, pageSize, paginationMode, filterProjectId, filterExternalId, filterSkuUsageIds, filterSkuGroupIds, options).then((request) => request(this.axios, this.basePath));
+    public getSkuUsage(filterProjectId?: string, filterExternalId?: string, filterSkuUsageIds?: string, filterSkuGroupIds?: string, options?: AxiosRequestConfig) {
+        return SkuUsageApiFp(this.configuration).getSkuUsage(filterProjectId, filterExternalId, filterSkuUsageIds, filterSkuGroupIds, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
