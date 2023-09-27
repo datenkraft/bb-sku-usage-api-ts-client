@@ -37,8 +37,8 @@ import { SkuUsage } from '../models';
 export const SkuUsageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
          * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
          * @param {string} [filterExternalId] SKUUsage ExternalId filter
          * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
@@ -149,8 +149,8 @@ export const SkuUsageApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SkuUsageApiAxiosParamCreator(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
          * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
          * @param {string} [filterExternalId] SKUUsage ExternalId filter
          * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
@@ -184,8 +184,8 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = SkuUsageApiFp(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
          * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
          * @param {string} [filterExternalId] SKUUsage ExternalId filter
          * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
@@ -216,8 +216,8 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
  */
 export interface SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
      * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
      * @param {string} [filterExternalId] SKUUsage ExternalId filter
      * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
@@ -248,8 +248,8 @@ export interface SkuUsageApiInterface {
  */
 export class SkuUsageApi extends BaseAPI implements SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds. At least one of those two options must be given
+     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
      * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
      * @param {string} [filterExternalId] SKUUsage ExternalId filter
      * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
