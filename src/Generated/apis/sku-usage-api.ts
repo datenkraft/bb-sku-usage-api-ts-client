@@ -37,12 +37,12 @@ import { SkuUsage } from '../models';
 export const SkuUsageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-         * @param {string} [filterExternalId] SKUUsage ExternalId filter
-         * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-         * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+         * @param {string} [filterSkuGroupIds] SkuGroupIds filter
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -149,12 +149,12 @@ export const SkuUsageApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SkuUsageApiAxiosParamCreator(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-         * @param {string} [filterExternalId] SKUUsage ExternalId filter
-         * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-         * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+         * @param {string} [filterSkuGroupIds] SkuGroupIds filter
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -184,12 +184,12 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = SkuUsageApiFp(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-         * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-         * @param {string} [filterExternalId] SKUUsage ExternalId filter
-         * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-         * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+         * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+         * @param {string} [filterSkuGroupIds] SkuGroupIds filter
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -216,12 +216,12 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
  */
 export interface SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-     * @param {string} [filterExternalId] SKUUsage ExternalId filter
-     * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-     * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+     * @param {string} [filterSkuGroupIds] SkuGroupIds filter
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SkuUsageApiInterface
@@ -248,12 +248,12 @@ export interface SkuUsageApiInterface {
  */
 export class SkuUsageApi extends BaseAPI implements SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR additionally by skuGroupIds. At least one of those three options must be given
-     * @param {string} [filterProjectId] SKUUsage ProjectId filter - Must not be present with filter[skuUsageIds]
-     * @param {string} [filterExternalId] SKUUsage ExternalId filter
-     * @param {string} [filterSkuUsageIds] SKUUsage SkuUsageIds filter
-     * @param {string} [filterSkuGroupIds] SKUUsage SkuGroupIds filter
+     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
+     * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
+     * @param {string} [filterSkuGroupIds] SkuGroupIds filter
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SkuUsageApi
