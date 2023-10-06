@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Backbone SKU Usage API
- *  - alpha: Currently developed API version. Subject to major changes. - beta: A semi-stable early access version. New features can be added. Breaking changes are possible. - stable: The API is recommended for use in production.  [Changelog](https://sku-usage-api.conqore.niceshops.com/v1/docs/changelog.html)  All data is transferred in UTF-8 encoding.\\ The API uses stateless HTTP. No cookies have to be kept.\\ Authentication via OAuth2 client credentials flow.  [Privacy Policy](https://www.niceshops.com/en/dienstleistungen/data-privacy-policy)  [Backbone SKU Usage API PHP client @Packagist](https://packagist.org/packages/datenkraft/bb-sku-usage-api-php-client)
+ *  - alpha: Currently developed API version. Subject to major changes. - beta: A semi-stable early access version. New features can be added. Breaking changes are possible. - stable: The API is recommended for use in production.  [Changelog](https://sku-usage-api.steve.niceshops.com/v1/docs/changelog.html)  All data is transferred in UTF-8 encoding.\\ The API uses stateless HTTP. No cookies have to be kept.\\ Authentication via OAuth2 client credentials flow.  [Privacy Policy](https://www.niceshops.com/en/dienstleistungen/data-privacy-policy)  [Backbone SKU Usage API PHP client @Packagist](https://packagist.org/packages/datenkraft/bb-sku-usage-api-php-client)
  *
  * The version of the OpenAPI document: v1.beta
  * 
