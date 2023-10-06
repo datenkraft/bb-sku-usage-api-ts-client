@@ -17,7 +17,7 @@ type Config = {
 }
 
 export const OpenAPI: Config = {
-    BASE: 'https://sku-usage-api.conqore.niceshops.com/v1',
+    BASE: 'https://sku-usage-api.steve.niceshops.com/v1',
     VERSION: '1.beta',
     WITH_CREDENTIALS: false,
     TOKEN: undefined,
