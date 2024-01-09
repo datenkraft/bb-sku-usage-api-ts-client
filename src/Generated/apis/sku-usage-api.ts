@@ -39,8 +39,8 @@ import { SkuUsage } from '../models';
 export const SkuUsageApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.\', summary: \'Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
          * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
          * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
          * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
@@ -151,8 +151,8 @@ export const SkuUsageApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SkuUsageApiAxiosParamCreator(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.\', summary: \'Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
          * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
          * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
          * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
@@ -186,8 +186,8 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = SkuUsageApiFp(configuration)
     return {
         /**
-         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
-         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+         * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.\', summary: \'Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
+         * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
          * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
          * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
          * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
@@ -218,8 +218,8 @@ export const SkuUsageApiFactory = function (configuration?: Configuration, baseP
  */
 export interface SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.\', summary: \'Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
      * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
      * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
      * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
@@ -250,8 +250,8 @@ export interface SkuUsageApiInterface {
  */
 export class SkuUsageApi extends BaseAPI implements SkuUsageApiInterface {
     /**
-     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
-     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds.\\ At least one of those three options must be given.\\ Combining projectId and externalId with skuUsageIds is not possible.
+     * Query SKU Usage data by projectId and externalId OR skuUsageIds OR skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.\', summary: \'Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
+     * @summary Query SKU Usage data by projectId and externalId OR by skuUsageIds OR by skuGroupIds. At least one of those three options must be given. Combining projectId and externalId with skuUsageIds is not possible.
      * @param {string} [filterProjectId] ProjectId filter - Required with filter[externalId] - Must not be present with filter[skuUsageIds]
      * @param {string} [filterExternalId] ExternalId filter - Required with filter[projectId] - Must not be present with filter[skuUsageIds]
      * @param {string} [filterSkuUsageIds] SkuUsageIds filter - Must not be present with filter[projectId] and filter[externalId]
