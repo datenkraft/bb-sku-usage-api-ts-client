@@ -2,8 +2,8 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Backbone SKU Usage API",
-        "description": "\n- alpha: Currently developed API version. Subject to major changes.\n- beta: A semi-stable early access version. New features can be added. Breaking changes are possible.\n- stable: The API is recommended for use in production.\n\n[Changelog](https:\/\/sku-usage-api.steve.niceshops.com\/v2\/docs\/changelog.html)\n\nAll data is transferred in UTF-8 encoding.\\\nThe API uses stateless HTTP. No cookies have to be kept.\\\nAuthentication via OAuth2 client credentials flow.\n\n[Privacy Policy](https:\/\/www.niceshops.com\/en\/dienstleistungen\/data-privacy-policy)\n\n[Backbone SKU Usage API PHP client @Packagist](https:\/\/packagist.org\/packages\/datenkraft\/bb-sku-usage-api-php-client)",
-        "version": "v2.beta"
+        "description": "\n- alpha: Currently developed API version. Subject to major changes.\n- beta: A semi-stable early access version. New features can be added. Breaking changes are possible.\n- stable: The API is recommended for use in production.\n- deprecated: Superseded by a newer version. Still supported, but not recommended for new integrations.\n\n[Changelog](https:\/\/sku-usage-api.steve.niceshops.com\/v2\/docs\/changelog.html)\n\nAll data is transferred in UTF-8 encoding.\\\nThe API uses stateless HTTP. No cookies have to be kept.\\\nAuthentication via OAuth2 client credentials flow.\n\n[Privacy Policy](https:\/\/www.niceshops.com\/en\/dienstleistungen\/data-privacy-policy)\n\n[Backbone SKU Usage API PHP client @Packagist](https:\/\/packagist.org\/packages\/datenkraft\/bb-sku-usage-api-php-client)",
+        "version": "v2.stable"
     },
     "servers": [
         {
@@ -2880,5 +2880,43 @@
                 "scheme": "bearer"
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "audit-log",
+            "description": "audit-log"
+        },
+        {
+            "name": "auth-permission",
+            "description": "auth-permission"
+        },
+        {
+            "name": "auth-permission-role",
+            "description": "auth-permission-role"
+        },
+        {
+            "name": "auth-role",
+            "description": "auth-role"
+        },
+        {
+            "name": "auth-role-identity",
+            "description": "auth-role-identity"
+        },
+        {
+            "name": "docs",
+            "description": "docs"
+        },
+        {
+            "name": "skuUsage",
+            "description": "skuUsage"
+        },
+        {
+            "name": "task",
+            "description": "task"
+        },
+        {
+            "name": "transaction",
+            "description": "transaction"
+        }
+    ]
 }
